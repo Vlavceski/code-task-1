@@ -1,30 +1,28 @@
-function findLongestWord(sentence) {
-    const words = sentence.match(/[a-zA-Z]+/g); 
+
+const input = "Smart people learn from everything and everyone, average people from their experience, stupid people already, have all the answers"
+
+const result = findWord(input);
+console.log(result)
+
+function findWord(sentence) {
+    const words = sentence.match(/[a-zA-Z]+/g);
     if (!words || words.length === 0) {
-      return null; 
+        return null;
     }
-  
-    let longestWord = '';
-    let maxLength = 0;
-    let maxVowelCount = 0;
-  
+
+    let longestWord = "";
+    let maxLen = 0;
+    let maxVCount = 0;
+
     for (const word of words) {
-      const cleanedWord = word.toLowerCase();
-      const vowelCount = (cleanedWord.match(/[aeiou]/g) || []).length;
-  
-      if (cleanedWord.length > maxLength || (cleanedWord.length === maxLength && vowelCount > maxVowelCount)) {
-        maxLength = cleanedWord.length;
-        maxVowelCount = vowelCount;
-        longestWord = word;
-      }
+        const cleanedWord = word.toLowerCase();
+        const vCount = (cleanedWord.match((/[aeiou]/g) || [])).length
+        if (cleanedWord.length > maxLen || (cleanedWord.length === maxLen && vCount > maxVCount)) {
+            maxLen = cleanedWord.length
+            maxVCount = vCount;
+            longestWord = word;
+        }
     }
-  
     return longestWord;
-  }
-  
-  // input
-  const inputSentence = "Smart people learn from everything and everyone, average people from their experience, stupid people already, have all the answers (Socrates)";
-  
-  // Output
-  const result = findLongestWord(inputSentence);
-  console.log(result);
+
+}
